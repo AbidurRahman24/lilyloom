@@ -24,7 +24,7 @@ const handleRegistration = (event) => {
       ) {
         console.log(info);
   
-        fetch("https://sunexpress.onrender.com/viewer/register/", {
+        fetch("http://127.0.0.1:8000/account/register/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(info),
@@ -53,7 +53,7 @@ const handleRegistration = (event) => {
     const password = getValue("login-password");
     console.log(username, password);
     if ((username, password)) {
-      fetch("https://sunexpress.onrender.com/viewer/login/", {
+      fetch("http://127.0.0.1:8000/account/login/", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ username, password }),

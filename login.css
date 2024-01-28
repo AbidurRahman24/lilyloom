@@ -7,7 +7,7 @@ body{
     justify-content: center;
     gap: 20px;
     align-items:center;
-    width:75%;
+    width:100%;
     margin: auto;
 }
 .input{
@@ -22,8 +22,9 @@ body{
     width:85%;
     margin: auto;
     border: none;
-    background-color: rgb(43, 121, 121);
-    color: white;
+    background-color: rgb(255, 242, 0);
+    color: rgb(0, 0, 0);
     font-size: 20px;
     border-radius: 10px;
+    box-shadow: 4px 4px 8px gray;
 }

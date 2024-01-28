@@ -47,10 +47,10 @@
           <!-- <ul id="category-container" class="slider-container py-4 d-flex"></ul> -->
 
 </header>
-    <main>
+    <main class="container">
         <div class="login-container">
             <div class="col-md-6">
-              <h1 class="title mt-5">Please Registration</h1>
+              <h1 class="title mt-2">Please Registration</h1>
               <form action="" onsubmit="handleRegistration(event)">
                 <p id="error" class="text-danger"></p>
                 <input
@@ -96,8 +96,9 @@
                   placeholder="Confirm password"
                   required
                 />
-                <input type="submit" class="submit-btn" value="Registration" />
-                <p><a href="login.html">go to login page</a></p>
+                <input type="submit" class="submit-btn mx-2 shadow" value="Registration" />
+                <p class="m-2">Already member? <a href="login.html">Login</a> here.</p>
+                <!-- <p><a href="login.html">go to login page</a></p> -->
               </form>
             </div>
             <div class="col-md-6">
@@ -109,41 +110,44 @@
 
 
     <!-- This is footer -->
-    <footer class="p-5">
-        <div class="container w-75 m-auto row p-5">
-          <div class="col-md-6">
-            <p><small>Copyright © SunExpress. All Rights Reserved</small></p>
-            <h5>Follow US</h5>
-            <div class="icons">
-              <img class="icon" src="./Images/LinkedIn.png" alt="" />
-              <img class="icon" src="./Images/YouTube.png" alt="" />
-              <img class="icon" src="./Images/LinkedIn.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-3">
-            <h5>Company</h5>
-            <li>ABout</li>
-            <li>Contact us</li>
-            <li>Culture</li>
-            <li>Blog</li>
-          </div>
-          <div class="col-md-3">
-            <h5>Company</h5>
-            <li>ABout</li>
-            <li>Contact us</li>
-            <li>Culture</li>
-            <li>Blog</li>
+    <footer class="p-5" style="background-color: #003b4d; color: white;">
+      <div class="container w-75 m-auto row p-5">
+        <div class="col-md-6">
+          <p><small>Copyright © LilyLoom. All Rights Reserved</small></p>
+          <h5>Follow US</h5>
+          <div class="icons">
+            <img class="icon" src="./Images/LinkedIn.png" alt="" />
+            <img class="icon" src="./Images/YouTube.png" alt="" />
+            <img class="icon" src="./Images/LinkedIn.png" alt="" />
           </div>
         </div>
-        <hr />
-        <p class="text-center mt-3">
-          <small>Copyright © Sun Express. All Rights Reserved</small>
-        </p>
-      </footer>
+        <div class="col-md-3">
+          <h5>Company</h5>
+          <li>ABout</li>
+          <li>Contact us</li>
+          <li>Culture</li>
+          <li>Blog</li>
+        </div>
+        <div class="col-md-3">
+          <h5>Company</h5>
+          <li>ABout</li>
+          <li>Contact us</li>
+          <li>Culture</li>
+          <li>Blog</li>
+        </div>
+      </div>
+      <hr />
+      <p class="text-center mt-3">
+        <small>Copyright © LilyLoom. All Rights Reserved</small>
+      </p>
+    </footer>
 
-    <script src="./app.js"></script>
-    <script src="./artDetails.js"></script>
-    <script src="./catDetails.js"></script>
-    <script src="./auth.js"></script>
+     <!-- this is script -->
+  <script src="./app.js"></script>
+  <script src="./artDetails.js"></script>
+  <script src="./catDetails.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./logout.js"></script>
+  <script src="./userDetails.js"></script>
 </body>
 </html>
