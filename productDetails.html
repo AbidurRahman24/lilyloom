@@ -1,123 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article details</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="..."
-    />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="..." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header class="container">
-      <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="index.html">Sun Express</a>
-            <ul id="nav-container" class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="index.html">Home</a>
-              </li>
-            </ul>
-            <form class="d-flex navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" target="_blank" href="registration.html">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" target="_blank" href="login.html">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="userDetails.html">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" style="cursor: pointer;"  onclick="handlelogOut()">Logout</a>
-              </li>
-            </form>
-          </div>
+  <header class="container">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6610f2; ">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <h2 class="navbar-brand text-white font-weight-bold" href="index.html">LilyLoom</h2>
+          <ul id="nav-container" class="navbar-nav me-auto  mb-lg-0">
+            <ul id="category-container" class=" slider-container d-flex text-white"></ul>
+          </ul>
+          <form class="d-flex navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white font-weight-bold" target="_blank" href="registration.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white font-weight-bold" target="_blank" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white font-weight-bold" href="userDetails.html">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white font-weight-bold" style="cursor: pointer;"
+                onclick="handlelogOut()">Logout</a>
+            </li>
+          </form>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-</header>
+  </header>
 
-<main class="container">
-    <div id="art-details">
-      
+  <main class="container">
+    <div id="product-details">
+      <!-- Modal -->
 
     </div>
+
+    <!-- This is model -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Submit Your Info</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="product-title"> </div>
+            <div id="product-price"> </div>
+            <input id="address" type="text" placeholder="Type Your address" />
+            <br />
+            
+              <!-- <option value="none" selected>available Time</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">other</option> -->
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button onclick="handleOrder()" type="button" class="btn btn-primary">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <h1>This is Avarage Rating</h1>
     <ul id="art-details-review" class="slider-container py-4"></ul>
 
     <!-- Rating -->
     <form action="" onsubmit="handleReview(event)">
       <p id="error" class="text-danger"></p>
-      <input
-        id="username"
-        type="text"
-        class="input"
-        placeholder="username"
-        required
-      />
-      <input
-        id="first_name"
-        type="text"
-        class="input"
-        placeholder="First Name"
-        required
-      />
-      <input
-        id="last_name"
-        type="text"
-        class="input"
-        placeholder="last Name"
-        required
-      />
+      <input id="username" type="text" class="input" placeholder="username" required />
+      <input id="first_name" type="text" class="input" placeholder="First Name" required />
+      <input id="last_name" type="text" class="input" placeholder="last Name" required />
       <input type="submit" class="submit-btn" value="Registration" />
       <p><a href="index.html">go to Home page</a></p>
     </form>
-</main>
+  </main>
 
 
-<footer class="p-5">
-  <div class="container w-75 m-auto row p-5">
-    <div class="col-md-6">
-      <p><small>Copyright © Smartcare. All Rights Reserved</small></p>
-      <h5>Follow US</h5>
-      <div class="icons">
-        <img class="icon" src="./Images/LinkedIn.png" alt="" />
-        <img class="icon" src="./Images/YouTube.png" alt="" />
-        <img class="icon" src="./Images/LinkedIn.png" alt="" />
+  <footer class="p-5" style="background-color: #003b4d; color: white;">
+    <div class="container w-75 m-auto row p-5">
+      <div class="col-md-6">
+        <p><small>Copyright © LilyLoom. All Rights Reserved</small></p>
+        <h5>Follow US</h5>
+        <div class="icons">
+          <img class="icon" src="./Images/LinkedIn.png" alt="" />
+          <img class="icon" src="./Images/YouTube.png" alt="" />
+          <img class="icon" src="./Images/LinkedIn.png" alt="" />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5>Company</h5>
+        <li>ABout</li>
+        <li>Contact us</li>
+        <li>Culture</li>
+        <li>Blog</li>
+      </div>
+      <div class="col-md-3">
+        <h5>Company</h5>
+        <li>ABout</li>
+        <li>Contact us</li>
+        <li>Culture</li>
+        <li>Blog</li>
       </div>
     </div>
-    <div class="col-md-3">
-      <h5>Company</h5>
-      <li>ABout</li>
-      <li>Contact us</li>
-      <li>Culture</li>
-      <li>Blog</li>
-    </div>
-    <div class="col-md-3">
-      <h5>Company</h5>
-      <li>ABout</li>
-      <li>Contact us</li>
-      <li>Culture</li>
-      <li>Blog</li>
-    </div>
-  </div>
-  <hr />
-  <p class="text-center mt-3">
-    <small>Copyright © Sun Express. All Rights Reserved</small>
-  </p>
-</footer>
+    <hr />
+    <p class="text-center mt-3">
+      <small>Copyright © LilyLoom. All Rights Reserved</small>
+    </p>
+  </footer>
 
-<!-- this is script -->
-<script src="./app.js"></script>
-<script src="./artDetails.js"></script>
-<script src="./catDetails.js"></script>
+  <!-- this is script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+  <script src="./app.js"></script>
+  <script src="./productDetails.js"></script>
+  <script src="./catDetails.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js" integrity="..."></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
+    defer></script>
 </body>
+
 </html>

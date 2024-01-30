@@ -33,19 +33,20 @@ const loadArticle = () => {
     .then((res) => res.json())
     .then((data) => 
     {
-      displayArticle(data)
-      // console.log(data);
+      displayProducts(data)
+      console.log(data);
     }
     )
     .catch((err) => console.log(err));
 };
 
-const displayArticle = (articles) => {
+const displayProducts = (products) => {
+  // console.log(products);
   const parent = document.getElementById("article-container");
 
-  // Iterate over the last 4 articles
-  for (let i = Math.max(0, articles.length - 4); i < articles.length; i++) {
-    const article = articles[i];
+  // Iterate over the last 4 prudct
+  for (let i = Math.max(0, products.length - 4); i < products.length; i++) {
+    const product = products[i];
 
     const col = document.createElement("div");
     col.classList.add("col-md-3", "mb-4");
@@ -55,14 +56,18 @@ const displayArticle = (articles) => {
 
     card.innerHTML = `
       <div class="card p-3">
-        <img src=${article.image} class="card-img-top" loading="lazy" alt="..." />
+        <img src=${product.image} class="card-img-top" loading="lazy" alt="..." />
       </div>
       <div class="card-body">
-        <h5 class="card-title font-weight-bold">${article.title}</h5>
-        <p class="card-text">${article.description.slice(0, 30)}</p>
-        <p class="card-text">$ ${article.price}</p>
-        <button class='btn btn-warning font-weight-bold' > <a class='text-decoration-none text-dark' target="_blank" href="artDetails.html?articleId=${
-          article.id
+        <h5 class="card-title font-weight-bold">
+        <a class='text-decoration-none text-dark' target="_blank" href="productDetails.html?productId=${
+          product.id
+        }">${product.title}</a> 
+        </h5>
+        <p class="card-text">${product.description.slice(0, 30)}</p>
+        <p class="card-text">$ ${product.price}</p>
+        <button class='btn btn-warning font-weight-bold' > <a class='text-decoration-none text-dark' target="_blank" href="productDetails.html?productId=${
+          product.id
         }">ADD TO BASKET</a> </button>
       </div>
     `;
