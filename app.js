@@ -1,6 +1,6 @@
 const loadCategory = () => {
   
-    fetch("http://127.0.0.1:8000/flower/list/")
+    fetch("https://lilyloom.onrender.com/flower/list/")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -16,7 +16,7 @@ const loadCategory = () => {
       li.classList.add("nav-item");
       li.innerHTML = `
                   <div class="nav-link text-white font-weight-bold">
-                  <a target="_blank" onclick="loadCategoryArticle('${cat.name}')" style="cursor: pointer;"> ${cat.name}</a>
+                  <a target="_blank" onclick="loadCategoryProduct('${cat.name}')" style="cursor: pointer;"> ${cat.name}</a>
                   </div>
         `;
       parent.appendChild(li);
@@ -26,15 +26,15 @@ const loadCategory = () => {
   };
 
 
-// load article
-const loadArticle = () => {
+// load product
+const loadProduct = () => {
   
-  fetch("http://127.0.0.1:8000/flower/flower/")
+  fetch("https://lilyloom.onrender.com/flower/flower/")
     .then((res) => res.json())
     .then((data) => 
     {
       displayProducts(data)
-      console.log(data);
+      // console.log(data);
     }
     )
     .catch((err) => console.log(err));
@@ -42,7 +42,7 @@ const loadArticle = () => {
 
 const displayProducts = (products) => {
   // console.log(products);
-  const parent = document.getElementById("article-container");
+  const parent = document.getElementById("product-container");
 
   // Iterate over the last 4 prudct
   for (let i = Math.max(0, products.length - 4); i < products.length; i++) {
@@ -78,12 +78,12 @@ const displayProducts = (products) => {
 };
 
 
-const loadCategoryArticle = (search) => {
+const loadCategoryProduct = (search) => {
   document.getElementById("products").innerHTML = "";
   // document.getElementById("spinner").style.display = "block";
   // console.log(search);
   fetch(
-    `http://127.0.0.1:8000/flower/flower/?search=${
+    `https://lilyloom.onrender.com/flower/flower/?search=${
       search ? search : ""
     }`
   )
@@ -121,7 +121,9 @@ const displyProducts = (products, searchText) => {
       <div class="card-body">
         <h4 class="card-title">${product?.title}</h4>
         <h6 class="card-subtitle mb-2 text-muted">${product?.description.slice(0, 100)}</h6>
-        <button class="btn btn-warning text-center"> <a class='text-decoration-none text-dark' target="_blank" href="docDetails.html?doctorId=${product.id}">Details</a> </button>
+        <button class="btn btn-warning text-center">  <a class='text-decoration-none text-dark' target="_blank" href="productDetails.html?productId=${
+          product.id
+        }">Details</a> </button>
       </div>
     </div>
     `;
@@ -135,36 +137,12 @@ const displyProducts = (products, searchText) => {
 
 const handleSearch = () => {
   const value = document.getElementById("search").value;
-  loadCategoryArticle(value);
+  loadCategoryProduct(value);
 };
 
 // load review rating
-const loadReviewRating = () => {
-  
-  fetch("https://sunexpress.onrender.com/article/reviews/")
-    .then((res) => res.json())
-    .then((data) => {
-      // console.log(data);
-      displayReviewRating(data)
-    })
-    .catch((err) => console.log(err));
-};
-const displayReviewRating = (ratings) => {
-  ratings.forEach((rating) => {
-    console.log(rating.rating);
-    const parent = document.getElementById("rating-container");
-    const li = document.createElement("li");
-    li.innerHTML = `
-                <div class='p-2'>
-                
-                <a target="_blank" onclick="loadCategoryArticleByRating('${rating.rating}')" style="cursor: pointer;"> ${rating.rating}</a>
-                </div>
-      `;
-    parent.appendChild(li);
-    
-  });
-};
+
 loadCategory()
-loadArticle()
-// loadCategoryArticle()
+loadProduct()
+// loadCategoryProduct()
 // loadReviewRating()

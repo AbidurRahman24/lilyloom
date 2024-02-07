@@ -2,13 +2,13 @@ const getparams = () => {
   const param = new URLSearchParams(window.location.search).get("productId");
   // console.log(param);
   // loadTime(param);
-  fetch(`http://127.0.0.1:8000/flower/flower/${param}`)
+  fetch(`https://lilyloom.onrender.com/flower/flower/${param}`)
     .then((res) => res.json())
     .then((data) => {
       // console.log(data);
       displayDetails(data)
     });
-  };
+};
 const displayDetails = (product) => {
   // console.log(article);
   const parent = document.getElementById("product-details");
@@ -25,7 +25,7 @@ const displayDetails = (product) => {
         <h5 class="card-title">${product.title}</h5>
         <p class="card-text">${product.description}</p>
         <p class="card-text"><small class="text-muted">$${product.price}</small></p>
-        <p class="card-text"><small class="text-muted">$${product.quentity}</small></p>
+        <p class="card-text"><small class="text-muted">Available Quantity: ${product.quantity}</small></p>
         <p class="card-text"><small class="text-muted">${product.category}</small></p>
         <button
             type="button"
@@ -41,69 +41,89 @@ const displayDetails = (product) => {
 </div>
       `;
   parent.appendChild(div);
-  
+
 };
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
-     const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
-     for (const cookie of cookies) {
-        if (cookie.startsWith(`${name}=`)) {
-           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-           break;
-        }
-     }
+    const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
+    for (const cookie of cookies) {
+      if (cookie.startsWith(`${name}=`)) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
   }
   return cookieValue;
 }
-const handleOrder = () => {
-  // const csrfToken = document.cookie.match(/csrftoken=([^ ;]+)(;|$)/)[1];
-  const csrfToken = getCookie("csrftoken");
-  console.log(csrfToken);
-  const param = new URLSearchParams(window.location.search).get("productId");
-  const address = document.getElementById("address").value;
-  const productTitleElement = document.getElementById("product-title");
-  const productPriceElement = document.getElementById("product-price");
-  const user_name = localStorage.getItem("user_name");
-  fetch(`http://127.0.0.1:8000/flower/flower/${param}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const title = data.title;
-      const price = data.price;
-      productTitleElement.innerHTML = title;
-      productPriceElement.innerHTML = price;
-      const postData = {
-        
-        quantity: 1,
-        status: 'Pending',
-        cancel: false,
-        user: user_name,
-        flower: title,
-      };
-      console.log(postData);
-      fetch("http://127.0.0.1:8000/flower/order/", {
-      method: "POST",
-      headers: { 
-        "content-type": "application/json",
-        "X-CSRFToken": csrfToken,
-      },
-      body: JSON.stringify(postData),
-      })
-    .then((res) => res.json())
-    .then((data) => {
-      
-      // console.log(data);
-    });
-    })
-}
-const loadUsertId = () => {
-  const user_id = localStorage.getItem("user_id");
 
-  fetch(`http://127.0.0.1:8000/users/${user_id}`)
+
+const getproduct = () => {
+  const param = new URLSearchParams(window.location.search).get("productId");
+  fetch(`https://lilyloom.onrender.com/flower/flower/${param}`)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data.username);
-      localStorage.setItem("user_name", data.username);
+      // console.log(data.id);
+      localStorage.setItem("flower", data.id);
+      localStorage.setItem("price", data.price);
+    });
+};
+getproduct()
+const handleOrder = () => {
+  const param = new URLSearchParams(window.location.search).get("productId");
+
+  // Show item name and price in model box
+  
+
+
+  const csrfToken = getCookie("csrftoken");
+  const quantity = document.getElementById("quantity").value;
+  const user = localStorage.getItem("user");
+  const price = localStorage.getItem("price");
+  const totalPrice = price * quantity;
+  console.log(price, "quantity:", quantity);
+
+
+
+  const info = {
+    quantity: quantity,
+    price: totalPrice,
+    status: "Pending",
+    cancel: false,
+    user: user,
+    flower: param,
+  };
+  console.log(info);
+
+  fetch(`https://lilyloom.onrender.com/flower/flower/${param}`)
+    .then((res) => res.json())
+    .then((product) => {
+      // Update modal box content with product details
+      document.getElementById("productName").innerText = product.title;
+      document.getElementById("productPrice").innerText = `$${product.price * quantity}`;
+    });
+  // https://lilyloom.onrender.com/order/orders/
+  fetch(`https://lilyloom.onrender.com/order/orders/`, {
+    method: 'POST',
+    body: JSON.stringify(info),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "X-CSRFToken": csrfToken,
+    }
+  })
+    .then(response => response.json())
+    .then(json => console.log(json));
+};
+
+
+const loadUsertId = () => {
+  const user = localStorage.getItem("user_id");
+
+  fetch(`https://lilyloom.onrender.com/users/${user}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('data User: ', data.id);
+      localStorage.setItem("user", data.id);
     });
 };
 loadUsertId()

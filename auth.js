@@ -24,7 +24,7 @@ const handleRegistration = (event) => {
       ) {
         console.log(info);
   
-        fetch("http://127.0.0.1:8000/account/register/", {
+        fetch("https://lilyloom.onrender.com/account/register/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(info),
@@ -42,18 +42,19 @@ const handleRegistration = (event) => {
     }
   };
   
-  const getValue = (id) => {
+const getValue = (id) => 
+{
     const value = document.getElementById(id).value;
     return value;
-  };
+};
   
   const handleLogin = (event) => {
     event.preventDefault();
     const username = getValue("login-username");
     const password = getValue("login-password");
-    console.log(username, password);
+    // console.log(username, password);
     if ((username, password)) {
-      fetch("http://127.0.0.1:8000/account/login/", {
+      fetch("https://lilyloom.onrender.com/account/login/", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ username, password }),

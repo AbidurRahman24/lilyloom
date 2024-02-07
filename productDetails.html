@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <header class="container">
+  <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6610f2; ">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
@@ -20,11 +20,11 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <h2 class="navbar-brand text-white font-weight-bold" href="index.html">LilyLoom</h2>
+          <a class="navbar-brand text-white font-weight-bold" href="index.html">LilyLoom</a>
           <ul id="nav-container" class="navbar-nav me-auto  mb-lg-0">
             <ul id="category-container" class=" slider-container d-flex text-white"></ul>
           </ul>
-          <form class="d-flex navbar-nav">
+          <div class="d-flex navbar-nav">
             <li class="nav-item">
               <a class="nav-link text-white font-weight-bold" target="_blank" href="registration.html">Register</a>
             </li>
@@ -34,14 +34,21 @@
             <li class="nav-item">
               <a class="nav-link text-white font-weight-bold" href="userDetails.html">Profile</a>
             </li>
+            <li class="nav-item" id="adminLink" style="display: none;">
+              <a class="nav-link text-white font-weight-bold" href="admin.html">Admin</a>
+          </li>
             <li class="nav-item">
               <a class="nav-link text-white font-weight-bold" style="cursor: pointer;"
                 onclick="handlelogOut()">Logout</a>
             </li>
-          </form>
+          </d>
         </div>
       </div>
     </nav>
+
+    <!-- <ul id="category-container" class="slider-container py-4 d-flex"></ul>
+              <h1>Filter By Rating</h1>
+              <ul id="rating-container" class="slider-container d-flex"></ul> -->
 
   </header>
 
@@ -57,20 +64,19 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Submit Your Info</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Confirm Order</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div id="product-title"> </div>
-            <div id="product-price"> </div>
-            <input id="address" type="text" placeholder="Type Your address" />
-            <br />
             
-              <!-- <option value="none" selected>available Time</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">other</option> -->
-            </select>
+            <div class="form-group">
+              <p>Product: <span id="productName"></span></p>
+              <p>Price: <span id="productPrice"></span></p>
+              <label for="quantity">Quantity:</label>
+              <input type="number" class="form-control" id="quantity" placeholder="Place quantity">
+          </div>
+
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -85,12 +91,12 @@
     </div>
 
 
-
+<!-- 
     <h1>This is Avarage Rating</h1>
-    <ul id="art-details-review" class="slider-container py-4"></ul>
+    <ul id="art-details-review" class="slider-container py-4"></ul> -->
 
     <!-- Rating -->
-    <form action="" onsubmit="handleReview(event)">
+    <!-- <form action="" onsubmit="handleReview(event)">
       <p id="error" class="text-danger"></p>
       <input id="username" type="text" class="input" placeholder="username" required />
       <input id="first_name" type="text" class="input" placeholder="First Name" required />
@@ -98,11 +104,11 @@
       <input type="submit" class="submit-btn" value="Registration" />
       <p><a href="index.html">go to Home page</a></p>
     </form>
-  </main>
+  </main> -->
 
 
   <footer class="p-5" style="background-color: #003b4d; color: white;">
-    <div class="container w-75 m-auto row p-5">
+    <div class="row p-5">
       <div class="col-md-6">
         <p><small>Copyright © LilyLoom. All Rights Reserved</small></p>
         <h5>Follow US</h5>
